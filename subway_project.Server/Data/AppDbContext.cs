@@ -12,6 +12,8 @@ namespace subway_project.Server.Data
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
+        public DbSet<Topping> Toppings { get; set; }
+        public DbSet<Sub> Subs { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Queue> Queues { get; set; }
@@ -22,9 +24,11 @@ namespace subway_project.Server.Data
             modelBuilder.Entity<Category>()
                 .HasIndex(c => c.Name)
                 .IsUnique();
+
             modelBuilder.Entity<SubCategory>()
                 .HasIndex(sc => sc.Name)
                 .IsUnique();
+
         }
     }
 

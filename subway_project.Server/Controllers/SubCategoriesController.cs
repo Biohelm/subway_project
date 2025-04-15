@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using subway_project.Server.Data;
 using subway_project.Server.Models;
-using subway_shared.DTOs.SubCategoryDTO;
+using subway_shared.DTOs.SubCategoryDTOs;
 
 namespace subway_project.Server.Controllers
 {
