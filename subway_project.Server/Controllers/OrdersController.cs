@@ -119,11 +119,7 @@ namespace subway_project.Server.Controllers
                 Subs = subs,
                 Products = products
             };
-
-            //Order order = _mapper.Map<Order>(orderDTO);
             _context.Orders.Add(order);
-            //Queue queue = new Queue();
-            //_context.Queues.Add(queue);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetOrder", new { id = order.Id }, order);
