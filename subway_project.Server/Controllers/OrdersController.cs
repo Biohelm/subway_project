@@ -78,52 +78,25 @@ namespace subway_project.Server.Controllers
             return NoContent();
         }
 
-        // POST: api/Orders
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Order>> PostOrder(OrderDTO orderDTO)
-        {
-            var subs = new List<Sub>();
-            foreach (var SubDTO in orderDTO.Subs)
-            {
-                var toppings = new List<Topping>();
+        //[HttpPost]
+        //public async Task<ActionResult<Order>> PostOrder(OrderDTO orderDTO)
+        //{
+        //    var subs = new List<Sub>();
+            
 
-                foreach (var toppingDTO in SubDTO.Toppings)
-                {
-                    var topping = _context.Toppings.FirstOrDefault(t => t.Name == toppingDTO.Name);
-                    if (topping != null) toppings.Add(topping);
+        //    Order order = new Order
+        //    {
+        //        Queue = new Queue(),
+        //        TakeAway = orderDTO.TakeAway,
+        //        TotalPrice = orderDTO.TotalPrice,
+        //        Subs = subs,
+        //        Products = products
+        //    };
+        //    _context.Orders.Add(order);
+        //    await _context.SaveChangesAsync();
 
-                    
-                }
-
-                var sub = new Sub
-                {
-                    Toppings = toppings
-                };
-
-                subs.Add(sub);
-            }
-            var products = new List<Product>();
-            foreach (var productDTO in orderDTO.Products)
-            {
-                var product = _context.Products.FirstOrDefault(_=>_.Name == productDTO.Name);
-
-                if(product!=null)products.Add(product);
-            }
-
-            Order order = new Order
-            {
-                Queue = new Queue(),
-                TakeAway = orderDTO.TakeAway,
-                TotalPrice = orderDTO.TotalPrice,
-                Subs = subs,
-                Products = products
-            };
-            _context.Orders.Add(order);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetOrder", new { id = order.Id }, order);
-        }
+        //    return CreatedAtAction("GetOrder", new { id = order.Id }, order);
+        //}
 
         // DELETE: api/Orders/5
         [HttpDelete("{id}")]
