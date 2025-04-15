@@ -3,6 +3,6 @@
     public class Sub
     {
         public int Id { get; set; }
-        public List<Topping> Toppings { get; set; } = [];
+        public List<SubIngredients> SubIngredients { get; set; } = [];
     }
 }
