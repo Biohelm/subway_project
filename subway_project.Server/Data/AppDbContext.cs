@@ -12,7 +12,7 @@ namespace subway_project.Server.Data
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
-        public DbSet<Topping> Toppings { get; set; }
+        public DbSet<SubIngredients> SubIngredients { get; set; }
         public DbSet<Sub> Subs { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Product> Products { get; set; }
