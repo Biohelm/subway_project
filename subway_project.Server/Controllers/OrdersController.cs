@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using subway_project.Server.Data;
 using subway_project.Server.Models;
 using subway_shared.DTOs.OrderDTOs;
+using subway_shared.DTOs.ToppingDTOs;
 
 namespace subway_project.Server.Controllers
 {
@@ -82,8 +83,47 @@ namespace subway_project.Server.Controllers
         [HttpPost]
         public async Task<ActionResult<Order>> PostOrder(OrderDTO orderDTO)
         {
-            Order order = _mapper.Map<Order>(orderDTO);
+            var subs = new List<Sub>();
+            foreach (var SubDTO in orderDTO.Subs)
+            {
+                var toppings = new List<Topping>();
+
+                foreach (var toppingDTO in SubDTO.Toppings)
+                {
+                    var topping = _context.Toppings.FirstOrDefault(t => t.Name == toppingDTO.Name);
+                    if (topping != null) toppings.Add(topping);
+
+                    
+                }
+
+                var sub = new Sub
+                {
+                    Toppings = toppings
+                };
+
+                subs.Add(sub);
+            }
+            var products = new List<Product>();
+            foreach (var productDTO in orderDTO.Products)
+            {
+                var product = _context.Products.FirstOrDefault(_=>_.Name == productDTO.Name);
+
+                if(product!=null)products.Add(product);
+            }
+
+            Order order = new Order
+            {
+                Queue = new Queue(),
+                TakeAway = orderDTO.TakeAway,
+                TotalPrice = orderDTO.TotalPrice,
+                Subs = subs,
+                Products = products
+            };
+
+            //Order order = _mapper.Map<Order>(orderDTO);
             _context.Orders.Add(order);
+            //Queue queue = new Queue();
+            //_context.Queues.Add(queue);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetOrder", new { id = order.Id }, order);
