@@ -9,7 +9,7 @@ using subway_project.Server.Data;
 using subway_project.Server.Models;
 using subway_shared.DTOs.CategoryDTOs;
 using subway_shared.DTOs.ProductDTOs;
-using subway_shared.DTOs.SubCategoryDTO;
+using subway_shared.DTOs.SubCategoryDTOs;
 
 namespace subway_project.Server.Controllers
 {
