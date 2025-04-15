@@ -11,7 +11,7 @@ public class MappingProfile : Profile
     {
         CreateMap<ProductPostDTO, Product>();
         CreateMap<OrderDTO, Order>();
-        CreateMap<ToppingDTO,Topping>();
+        CreateMap<ToppingDTO,SubIngredients>();
         CreateMap<SubDTO, Sub>();
     }
 }
