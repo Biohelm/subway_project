@@ -1,9 +1,8 @@
 ﻿namespace subway_project.Server.Models
 {
-    public class Queue
+    public class Sub
     {
         public int Id { get; set; }
-        public Order Order { get; set; }
-
+        public List<Topping> Toppings { get; set; } = [];
     }
 }
