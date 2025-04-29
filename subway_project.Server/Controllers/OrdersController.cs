@@ -29,10 +29,24 @@ namespace subway_project.Server.Controllers
 
         // GET: api/Orders
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
-        {
-            return await _context.Orders.Include(o => o.Products).ToListAsync();
-        }
+public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
+{
+    try
+    {
+        return await _context.Orders.Include(o => o.Products)
+            .Include(o => o.Subs).ThenInclude(s => s.Products)
+            .ToListAsync();
+    }
+    catch (Exception ex)
+    {
+        // Print detailed error to server console
+        Console.WriteLine("Exception in GetOrders: " + ex.ToString());
+        return StatusCode(500, "An internal error occurred. Check the server logs.");
+    }
+}
+
+
+
 
         // GET: api/Orders/5
         [HttpGet("{id}")]

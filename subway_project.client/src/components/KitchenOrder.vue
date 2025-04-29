@@ -70,6 +70,24 @@
     return Object.values(map)
   }
 
+  const groupedSubList = (subs) => {
+    return subs.map(sub => {
+      const map = {};
+      for (const product of sub.products) {
+        if (!map[product.name]) {
+          map[product.name] = { ...product, quantity: 1 };
+        } else {
+          map[product.name].quantity += 1;
+        }
+      }
+      return {
+        ...sub,
+        products: Object.values(map)
+      };
+    });
+  };
+
+
 </script>
 
 <template>
@@ -82,14 +100,17 @@
           Order: {{ order.id }} - {{ order.takeAway ? 'Take Away' : 'Eat Here' }}
         </div>
 
-        <!-- Sub -->
-        <div v-if="groupedList(order.products.filter(p => p.subCategoryId >= 1 && p.subCategoryId <= 5)).length">
-          <p><strong>Sub:</strong></p>
-          <ul>
-            <li v-for="product in groupedList(order.products.filter(p => p.subCategoryId >= 1 && p.subCategoryId <= 5))" :key="product.id">
-              {{ product.name }} x {{ product.quantity }}
-            </li>
-          </ul>
+        <!-- Subs -->
+        <div v-if="order.subs && order.subs.length">
+          <p><strong>Subs:</strong></p>
+          <div v-for="(sub, index) in groupedSubList(order.subs)" :key="index">
+            <p><strong>Sub {{ index + 1 }}</strong></p>
+            <ul>
+              <li v-for="product in sub.products" :key="product.id">
+                {{ product.name }} x {{ product.quantity }}
+              </li>
+            </ul>
+          </div>
         </div>
 
         <!-- Drinks -->

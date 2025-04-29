@@ -1,4 +1,6 @@
-﻿namespace subway_project.Server.Models
+﻿using System.Text.Json.Serialization;
+
+namespace subway_project.Server.Models
 {
     public class Product
     {
@@ -10,7 +12,9 @@
         public int CategoryId { get; set; }
         public Category? Category { get; set; }
         public string ImageUrl { get; set; } = "images\\no-image-available.jpg";
+        [JsonIgnore]
         public List<Order> Orders { get; set; } = new();
+        [JsonIgnore]
         public List<Sub> Subs { get; set; } = new();
     }
 }
