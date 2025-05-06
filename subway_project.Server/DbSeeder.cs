@@ -37,7 +37,8 @@ namespace subway_project.Server
                     new SubCategory { Name = "Chips", CategoryId = 4 },
                     new SubCategory { Name = "Cookies", CategoryId = 4 },
                     new SubCategory { Name = "Ice-Cream", CategoryId = 5 },
-                    new SubCategory { Name = "Pies", CategoryId = 5 }
+                    new SubCategory { Name = "Pies", CategoryId = 5 },
+                    new SubCategory {Name = "Favorites", CategoryId = 1}
                     );
 
                 context.SaveChanges();
@@ -99,6 +100,34 @@ namespace subway_project.Server
                     new Product { Name = "Cheesecake", Price = 22.00m, SubCategoryId = 11, CategoryId = 5, ImageUrl = "https://images3.alphacoders.com/600/600689.jpg" }
                 );
 
+                context.SaveChanges();
+            }
+
+            if (!context.Favorites.Any())
+            {
+                context.Favorites.AddRange(
+                    new Favorite
+                    {
+                        Name = "Triple Cheesy Ham & Turkey Deluxe",
+                        Price = 142.00m,
+                        ImgUrl = "https://img.asmedia.epimg.net/resizer/v2/JL6RSW5ELJALXMO5VK6UK72YDE.jpg?auth=b912b4a61e1c98d97eb34ec37d3a1f68bde5a14bb1aef4b9a6c57f5f20b9891a&width=1472&height=828&smart=true",
+                        Description = "Our best selling special, a cheesy sub including Ham, Turkey, Tomato, Onion, Mayonnaise, Cheddar, Mozzarella and Hard Cheese. Served with Coca-Cola, Lays Original chips and a our Apple Pie Dessert",
+                        Products = new List<Product>
+                        {
+                            context.Products.FirstOrDefault(p => p.Name == "White Bread")!,
+                            context.Products.FirstOrDefault(p => p.Name == "Ham")!,
+                            context.Products.FirstOrDefault(p => p.Name == "Turkey")!, 
+                            context.Products.FirstOrDefault(p => p.Name == "Mayonnaise")!,
+                            context.Products.FirstOrDefault(p => p.Name == "Cheddar")!,
+                            context.Products.FirstOrDefault(p => p.Name == "Mozzarella")!,
+                            context.Products.FirstOrDefault(p => p.Name == "Hard Cheese")!,
+                            context.Products.FirstOrDefault(p => p.Name == "Tomato")!,
+                            context.Products.FirstOrDefault(p => p.Name == "Onion")!,
+                            context.Products.FirstOrDefault(p => p.Name == "Coca-Cola")!,
+                            context.Products.FirstOrDefault(p => p.Name == "Lays Original")!,
+                            context.Products.FirstOrDefault(p => p.Name == "Apple Pie")!,
+                        }
+                    });
                 context.SaveChanges();
             }
 

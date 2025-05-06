@@ -1,5 +1,6 @@
 <script setup>
   import { ref, onBeforeMount } from "vue";
+  import router from "@/router";
 
   const baseUrl = "https://localhost:7193";
   const categories = ref([]);
@@ -30,6 +31,10 @@
   });
 
   const toggleSubCategories = async (category) => {
+    console.log(category)
+    if (category.id == 1) {
+      router.push("/specials")
+    }
     if (category.showSubCategories) {
       category.showSubCategories = false;
       subsToShow.value = [];

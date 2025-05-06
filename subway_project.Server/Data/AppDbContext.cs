@@ -17,6 +17,7 @@ namespace subway_project.Server.Data
         public DbSet<Sub> Sub { get; set; }
         public DbSet<OrderProduct> OrderProduct { get; set; }
         public DbSet<SubProduct> SubProduct { get; set; }
+        public DbSet<Favorite> Favorites { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
