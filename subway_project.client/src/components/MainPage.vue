@@ -1,7 +1,7 @@
 <script setup>
   import { ref, reactive, watch, onMounted } from "vue";
   import { useOrderStore } from "@/stores/useOrderStore";
-  import { useSubStore } from "@/stores/subStore";
+  import { useSubStore } from "@/stores/SubStore";
 
   const orderStore = useOrderStore();
   const subStore = useSubStore();
