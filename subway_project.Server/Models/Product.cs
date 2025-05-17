@@ -11,6 +11,6 @@
         public Category? Category { get; set; }
         public string ImageUrl { get; set; } = "images\\no-image-available.jpg";
         public ICollection<OrderProduct> OrderProducts { get; set; } = [];
-        public int Calories { get; set; }
+        public int Calories { get; set; } = 0;
     }
 }

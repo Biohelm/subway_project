@@ -37,7 +37,8 @@ namespace subway_project.Server.Controllers
                 Price = p.Price,
                 CategoryId = p.CategoryId,
                 SubCategoryId = p.SubCategoryId,
-                ImageUrl = p.ImageUrl ?? "images\\no-image-available.jpg"
+                ImageUrl = p.ImageUrl ?? "images\\no-image-available.jpg",
+                Calories = p.Calories
             }).ToList();
             return Ok(productDTOs);
         }
@@ -60,7 +61,8 @@ namespace subway_project.Server.Controllers
                 Price = product.Price,
                 CategoryId = product.CategoryId,
                 SubCategoryId = product.SubCategoryId,
-                ImageUrl = product.ImageUrl
+                ImageUrl = product.ImageUrl,
+                Calories = product.Calories
             };
 
             return productDTO;
@@ -83,6 +85,7 @@ namespace subway_project.Server.Controllers
             product.CategoryId = productDTO.CategoryId;
             product.SubCategoryId = productDTO.SubCategoryId;
             product.ImageUrl = productDTO.ImageUrl;
+            product.Calories = productDTO.Calories;
 
             _context.Entry(product).State = EntityState.Modified;
 
@@ -125,6 +128,7 @@ namespace subway_project.Server.Controllers
                 CategoryId = productDTO.CategoryId,
                 SubCategoryId = productDTO.SubCategoryId,
                 ImageUrl = productDTO.ImageUrl,
+                Calories = productDTO.Calories
             };
 
             _context.Products.Add(product);
@@ -137,7 +141,8 @@ namespace subway_project.Server.Controllers
                 Price = product.Price,
                 CategoryId = product.CategoryId,
                 SubCategoryId = product.SubCategoryId,
-                ImageUrl = product.ImageUrl
+                ImageUrl = product.ImageUrl,
+                Calories = product.Calories
             };
 
             return CreatedAtAction("GetProduct", new { id = product.Id }, productGetDTO);

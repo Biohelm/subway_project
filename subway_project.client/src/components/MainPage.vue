@@ -79,6 +79,7 @@
       <img class="image" :src="p.imageUrl" alt="Product Image">
       <h1>{{ p.name }}</h1>
       <p>Price: {{ p.price }}kr</p>
+      <p>Kcal: {{ p.calories }}</p>
       <button v-if="p.categoryId === 2" class="button" @click="addToSub(p)" :disabled="isAddToSubDisabled(p.subCategoryId)">
         <!-- Visual Studio says "'isAddToSubDisabled(p.subCategoryId)' is not a valid value of attribute 'disabled'",
         but the functionality works as intended (i.e. the button is disabled if a certain amount of a product is in "items"). -->
