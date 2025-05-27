@@ -33,3 +33,7 @@ npm run build
 ```sh
 npm run lint
 ```
+I och med att jag har suttit mest i frontend så har jag inte jobbat med multiple startup projects i Visual Studio,
+jag har startat backend i Visual Studio och frontend i VS Code terminalen med npm run dev.
+Jag frågade ChatGPT om multiple startup projects när man jobbar med Vue i frontend och 
+fick till svar att det är rekommenderat att starta upp dem separat i Visual Studio och VS Code. 
