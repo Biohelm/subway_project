@@ -2,7 +2,7 @@
   import { ref, reactive, watch, computed } from "vue";
   import { useRouter } from "vue-router";
   import { useOrderStore } from "@/stores/useOrderStore";
-  import { useSubStore } from "@/stores/subStore";
+  import { useSubStore } from "@/stores/SubStore";
 
   const orderStore = useOrderStore();
   const subStore = useSubStore();
@@ -66,9 +66,7 @@
     })
       .then((response) => {
         if (response.ok) {
-          console.log("The Pinia-order was saved successfully to database");
-          //router.push("/orderConfirmation"); //using this redirect to the OrderConfirmation page will result in the default timeout of 30 seconds.
-          router.push({ name: 'OrderConfirmation', query: { timeout: 15 } }); //using this redirect to the OrderConfirmation page will result in a timeout of 15 seconds (or whatever you set the timeout value to).
+          router.push({ name: 'OrderConfirmation', query: { timeout: 15 } });
         }
         else {
           console.log("Something went wrong when saving the PINIA-order to the database");
@@ -80,17 +78,16 @@
 
   const isAddToSubDisabled = (subCatId) => {
     if (!props.cartLimits || !subStore.sub.products) {
-      return false; // No limits or products in subStore, so not disabled
+      return false;
     }
 
-    const subHasBread = subStore.sub.products.findIndex(product => product.subCategoryId === 1) !== -1; //check if there is bread in the sub
-    if (!subHasBread) { //if there is no bread in the sub
-      if (subCatId >= 2 && subCatId <= 5) { //if subcategory is vegetables/sauces/cheese/proteins
-        return true; //return true to disable the button
+    const subHasBread = subStore.sub.products.findIndex(product => product.subCategoryId === 1) !== -1; 
+    if (!subHasBread) { 
+      if (subCatId >= 2 && subCatId <= 5) {
+        return true;
       }
     }
 
-    //if there is bread in the sub check number of items of the subcategory in the sub, and return true/false depending on if the limit is reached
     const productCount = subStore.sub.products.filter(product => product.subCategoryId === subCatId).length;
     return productCount >= props.cartLimits[subCatId];
   };
@@ -164,8 +161,6 @@
         <div>
           <button @click="subStore.removeProduct(product)">-</button>
           <button @click="subStore.addProduct(product)" :disabled="isAddToSubDisabled(product.subCategoryId)">+</button>
-          <!-- Visual Studio says "'isAddToSubDisabled(product.subCategoryId)' is not a valid value of attribute 'disabled'",
-          but the functionality works as intended (i.e. the button is disabled if a certain amount of a product is in "groupedList").-->
         </div>
       </div>
       <button class="btn" @click="addSubToCart" :disabled="isAddSubToCartDisabled()">Add sub to cart</button>

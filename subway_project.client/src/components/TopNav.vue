@@ -1,6 +1,6 @@
 <script setup>
   import { useOrderStore } from "@/stores/useOrderStore";
-  import { useSubStore } from "@/stores/subStore";
+  import { useSubStore } from "@/stores/SubStore";
 
   const orderStore = useOrderStore();
   const subStore = useSubStore();

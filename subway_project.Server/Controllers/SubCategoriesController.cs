@@ -43,39 +43,6 @@ namespace subway_project.Server.Controllers
             return subCategory;
         }
 
-        // PUT: api/SubCategories/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        /*
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutSubCategory(int id, SubCategory subCategory)
-        {
-            if (id != subCategory.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(subCategory).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SubCategoryExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-        */
-
         // POST: api/SubCategories
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]

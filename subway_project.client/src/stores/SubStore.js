@@ -11,10 +11,8 @@ export const useSubStore = defineStore("subStore", {
   actions: {
     addProduct(product) {
       const orderStore = useOrderStore();
-      // Check if there is already bread in the sub
       const hasBread = this.sub.products.find((p) => p.subCategoryId === 1);
       if (hasBread && product.subCategoryId === 1) {
-        console.log("PINIA: cannot add more bread to sub");
         return;
       }
 
