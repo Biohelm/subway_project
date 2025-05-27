@@ -1,13 +1,12 @@
 <script setup>
     import { ref, onMounted} from 'vue';
-    import { useSubStore } from '@/stores/subStore';
+    import { useSubStore } from '@/stores/SubStore';
     import { useOrderStore } from '@/stores/useOrderStore';
 
     const subStore = useSubStore();
     const orderStore = useOrderStore();
     const favorites = ref([]);
     const error = ref("");
-    const loading = ref(true);
 
     async function getSpecials() {
     try {
@@ -19,9 +18,6 @@
     }
     catch (err) {
       error.value = err.message
-    }
-    finally {
-      loading.value = false
     }
   }
 
@@ -47,12 +43,12 @@
 <template>
 <h1>Favorites</h1>
 <ul class="fav-ul">
-    <li v-for="s in favorites" class="fav-li">
-        <button @click="createOrder(s)">
-            <img :src="s.imgUrl" alt="Sandwich">
-            <p>{{ s.name }}</p>
-        <p>{{ s.price }}kr</p>
-        <p>{{ s.description }}</p>
+    <li v-for="f in favorites" class="fav-li">
+        <button @click="createOrder(f)">
+            <img :src="f.imgUrl" alt="Sandwich">
+            <p>{{ f.name }}</p>
+        <p>{{ f.price }}kr</p>
+        <p>{{ f.description }}</p>
         </button>
     </li>
 </ul>
