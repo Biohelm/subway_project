@@ -84,7 +84,7 @@ const isAddToSubDisabled = (subCatId) => {
 <template>
 
 <div class="products-container">
-    <p>Click on the productimage to read its nutritional-value</p>
+  <p class="Product-Image-Text">Tap the product image to see the nutrition info</p>
   </div>
   <div v-if="showProducts" class="products-container">
     <div v-for="p in filteredProducts" :key="p.id" :id="`product-` + p.id" class="product">
@@ -94,14 +94,14 @@ const isAddToSubDisabled = (subCatId) => {
             <img class="image" :src="p.imageUrl" alt="Product Image">
           </div>
           <div class="flip-card-back">
-            <h3>Nutritional value:</h3>
+            <h3>Nutrition:</h3>
             <ul class="nutritional-value">
-              <li>* Calories {{ p.calories }} kcal</li>
-              <li>* Protein {{ p.protein }} g</li>
-              <li>* Carbohydrates {{ p.carbohydrates }} g</li>
-              <li>* Fat {{ p.fat }} g</li>
-              <li>* Fiber {{ p.fiber }} g</li>
-              <li>* Salt {{ p.salt }} g</li>
+              <li>Calories {{ p.calories }} kcal</li>
+              <li>Protein {{ p.protein }} g</li>
+              <li>Carbohydrates {{ p.carbohydrates }} g</li>
+              <li>Fat {{ p.fat }} g</li>
+              <li>Fiber {{ p.fiber }} g</li>
+              <li>Salt {{ p.salt }} g</li>
             </ul>
           </div>
         </div>
@@ -128,6 +128,12 @@ h1 {
   font-size: 1.2rem;
   margin: 12px 0 6px;
   text-align: center;
+}
+
+.Product-Image-Text {
+  text-align: center;
+  font-size: 1.2rem;
+  font-family: "Kanit", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .image {

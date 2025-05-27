@@ -6,7 +6,7 @@ export const useOrderStore = defineStore('order', {
     order: {
       takeAway: false,
       totalPrice: 0,
-      totalcalories: 0,
+      totalCalories: 0,
       products: [],
       subs: [],
       customerId: uuidv4(),
@@ -17,8 +17,10 @@ export const useOrderStore = defineStore('order', {
     addProduct(product) {
       this.order.products.push(product);
       this.order.totalPrice += product.price;
+      this.order.totalCalories += product.calories;
       console.log('PINIA: price added: ', product.price, 'new total: ', this.order.totalPrice)
       console.log('PINIA: added product', product, 'to order:', this.order.products)
+      console.log('PINIA: calories added: ', product.calories, 'new total: ', this.order.totalCalories)
     },
 
     removeProduct(product) {
@@ -26,8 +28,10 @@ export const useOrderStore = defineStore('order', {
       if (index !== -1) {
         this.order.products.splice(index, 1);
         this.order.totalPrice -= product.price;
+        this.order.totalCalories -= product.calories;
         console.log('PINIA: removed price: ', product.price, 'new total: ', this.order.totalPrice)
         console.log('PINIA: removed product', product, 'from order:', this.order.products)
+        console.log('PINIA: removed calories: ', product.calories, 'new total: ', this.order.totalCalories)
       } else {
         console.log('PINIA: product not found in order:', product)
       }
@@ -45,7 +49,7 @@ export const useOrderStore = defineStore('order', {
     },
 
     addToTotalCalories(calories) {
-      this.order.totalcalories += calories;
+      this.order.totalCalories += calories;
       console.log('PINIA: calories added: ', calories, 'new total: ', this.order.totalcalories)
     },
 
@@ -69,6 +73,7 @@ export const useOrderStore = defineStore('order', {
       this.order = {
         takeAway: false,
         totalPrice: 0,
+        totalCalories: 0,
         products: [],
         subs: [],
         customerId: uuidv4(),
