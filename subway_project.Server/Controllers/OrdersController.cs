@@ -37,6 +37,7 @@ namespace subway_project.Server.Controllers
                 .Include(o => o.Subs)
                     .ThenInclude(s => s.SubProducts)
                         .ThenInclude(sp => sp.Product)
+                        .ThenInclude(sp => sp.Calories)
                 .ToListAsync();
 
             return Ok(orders);

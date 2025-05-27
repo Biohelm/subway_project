@@ -83,6 +83,9 @@ const isAddToSubDisabled = (subCatId) => {
 
 <template>
 
+<div class="products-container">
+    <p>Click on the productimage to read its nutritional-value</p>
+  </div>
   <div v-if="showProducts" class="products-container">
     <div v-for="p in filteredProducts" :key="p.id" :id="`product-` + p.id" class="product">
       <div class="flip-card" @click="flipImage(p.id)">
@@ -116,6 +119,7 @@ const isAddToSubDisabled = (subCatId) => {
       </button>
     </div>
   </div>
+
 
 </template>
 

@@ -145,6 +145,8 @@
           </div>
         </div>
         Total: {{ orderStore.order.totalPrice }} kr
+        <br>
+        Calories: {{ orderStore.order.totalCalories }} kcal
         <p v-if="orderStore.order.takeAway">Takeaway</p>
         <p v-else>Eat Here</p>
       </span>

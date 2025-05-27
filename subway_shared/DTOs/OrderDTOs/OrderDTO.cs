@@ -10,5 +10,6 @@ namespace subway_shared.DTOs.OrderDTOs
         public List<ProductDTO> Products { get; set; } = new();
         public List<SubDTO> Subs { get; set; } = new();
         public string customerId { get; set; } = null!;
+        public double TotalCalories { get; set; }
     }
 }

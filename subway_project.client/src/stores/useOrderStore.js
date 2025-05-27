@@ -6,6 +6,7 @@ export const useOrderStore = defineStore('order', {
     order: {
       takeAway: false,
       totalPrice: 0,
+      totalcalories: 0,
       products: [],
       subs: [],
       customerId: uuidv4(),
@@ -41,6 +42,11 @@ export const useOrderStore = defineStore('order', {
     addToTotalPrice(price) {
       this.order.totalPrice += price;
       console.log('PINIA: price added: ', price, 'new total: ', this.order.totalPrice)
+    },
+
+    addToTotalCalories(calories) {
+      this.order.totalcalories += calories;
+      console.log('PINIA: calories added: ', calories, 'new total: ', this.order.totalcalories)
     },
 
     addSubToOrder(sub) {
