@@ -38,7 +38,12 @@ namespace subway_project.Server.Controllers
                 CategoryId = p.CategoryId,
                 SubCategoryId = p.SubCategoryId,
                 ImageUrl = p.ImageUrl ?? "images\\no-image-available.jpg",
-                Calories = p.Calories
+                Calories = p.Calories,
+                Protein = p.Protein,
+                Carbohydrates = p.Carbohydrates,
+                Fat = p.Fat,
+                Fiber = p.Fiber,
+                Salt = p.Salt
             }).ToList();
             return Ok(productDTOs);
         }
@@ -62,7 +67,12 @@ namespace subway_project.Server.Controllers
                 CategoryId = product.CategoryId,
                 SubCategoryId = product.SubCategoryId,
                 ImageUrl = product.ImageUrl,
-                Calories = product.Calories
+                Calories = product.Calories,
+                Protein = product.Protein,
+                Carbohydrates = product.Carbohydrates,
+                Fat = product.Fat,
+                Fiber = product.Fiber,
+                Salt = product.Salt
             };
 
             return productDTO;
@@ -86,6 +96,11 @@ namespace subway_project.Server.Controllers
             product.SubCategoryId = productDTO.SubCategoryId;
             product.ImageUrl = productDTO.ImageUrl;
             product.Calories = productDTO.Calories;
+            product.Protein = productDTO.Protein;
+            product.Carbohydrates = productDTO.Carbohydrates;
+            product.Fat = productDTO.Fat;
+            product.Fiber = productDTO.Fiber;
+            product.Salt = productDTO.Salt;
 
             _context.Entry(product).State = EntityState.Modified;
 
@@ -128,7 +143,12 @@ namespace subway_project.Server.Controllers
                 CategoryId = productDTO.CategoryId,
                 SubCategoryId = productDTO.SubCategoryId,
                 ImageUrl = productDTO.ImageUrl,
-                Calories = productDTO.Calories
+                Calories = productDTO.Calories,
+                Protein = productDTO.Protein,
+                Carbohydrates = productDTO.Carbohydrates,
+                Fat = productDTO.Fat,
+                Fiber = productDTO.Fiber,
+                Salt = productDTO.Salt
             };
 
             _context.Products.Add(product);
@@ -142,7 +162,12 @@ namespace subway_project.Server.Controllers
                 CategoryId = product.CategoryId,
                 SubCategoryId = product.SubCategoryId,
                 ImageUrl = product.ImageUrl,
-                Calories = product.Calories
+                Calories = product.Calories,
+                Protein = product.Protein,
+                Carbohydrates = product.Carbohydrates,
+                Fat = product.Fat,
+                Fiber = product.Fiber,
+                Salt = product.Salt
             };
 
             return CreatedAtAction("GetProduct", new { id = product.Id }, productGetDTO);
