@@ -135,7 +135,7 @@
   <div class="cart">
 
     <div class="cart-header">
-      <div class="allergy-msg">Om du är allergisk, fråga personalen.</div>
+      <div class="allergy-msg">Contact the staff if you have any allergies.</div>
       <span v-if="orderStore.order.products.length > 0 || orderStore.order.subs.length > 0 || subStore.sub.products.length > 0">
         <div class="cart-footer">
           <button @click="checkout" :disabled="IsCheckoutDisabled()">Finalize order</button>
